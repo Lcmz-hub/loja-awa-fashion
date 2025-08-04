@@ -1,0 +1,45 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "produtos"
+    label: "Produtos"
+    folder: "src/data/produtos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nome", name: "nome", widget: "string"}
+      - {label: "Preço (MT)", name: "preco", widget: "number"}
+      - {label: "Categoria", name: "categoria", widget: "select", options: ["feminino", "masculino"]}
+      - {label: "Descrição", name: "descricao", widget: "text"}
+      - {label: "Imagem", name: "imagem", widget: "image"}
+      - label: "Tamanhos"
+        name: "tamanhos"
+        widget: "list"
+        default: ["P", "M", "G", "GG"]
+      - label: "Cores"
+        name: "cores"
+        widget: "list"
+        default: ["Preto", "Branco", "Azul"]
+      - {label: "Ativo", name: "ativo", widget: "boolean", default: true}
+      - {label: "Destaque", name: "destaque", widget: "boolean", default: false}
+
+  - name: "configuracoes"
+    label: "Configurações da Loja"
+    files:
+      - label: "Informações Gerais"
+        name: "geral"
+        file: "src/data/config.json"
+        fields:
+          - {label: "Nome da Loja", name: "nomeLoja", widget: "string"}
+          - {label: "Endereço", name: "endereco", widget: "string"}
+          - {label: "Telefone", name: "telefone", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Horário de Funcionamento", name: "horario", widget: "text"}
+          - {label: "Custo Entrega Casa (MT)", name: "custoEntregaCasa", widget: "number"}
+          - {label: "Custo Delivery (MT)", name: "custoDelivery", widget: "number"}
+
